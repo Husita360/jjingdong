@@ -1,0 +1,58 @@
+{
+  "id": "1914500",
+  "name": "京东",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1146282",
+      "name": "iconfont_down",
+      "font_class": "icon12",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "1311980",
+      "name": "定位",
+      "font_class": "dingwei",
+      "unicode": "e63e",
+      "unicode_decimal": 58942
+    },
+    {
+      "icon_id": "6102963",
+      "name": "客服",
+      "font_class": "kefu",
+      "unicode": "e644",
+      "unicode_decimal": 58948
+    },
+    {
+      "icon_id": "6237091",
+      "name": "相机",
+      "font_class": "tubiaozhizuo-",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "8880967",
+      "name": "购物车",
+      "font_class": "gouwuche",
+      "unicode": "e66e",
+      "unicode_decimal": 58990
+    },
+    {
+      "icon_id": "13613282",
+      "name": "feedback",
+      "font_class": "feedback",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "755541",
+      "name": "放大镜",
+      "font_class": "search",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    }
+  ]
+}

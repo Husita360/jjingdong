@@ -1,0 +1,1 @@
+"use strict";$.get("../php/showlist.php",function(t){var a=JSON.parse(t);0==a.code?alert("购物车里面空空的"):(console.log(a.data[2].product_name),$("#cell-name").html(a.data[2].product_name),$("#cell-price").html(a.data[2].product_price),$("#cell-img ").attr("src",a.data[2].product_img))});
