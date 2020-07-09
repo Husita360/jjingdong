@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width:1200px;
+            margin:0 auto;
+        }
+        .container>.items{
+            padding-top:40px;
+            /* items为什么需要定位 */
+            position: relative;
+            /* 问什么要设置这个height,是为了按钮能在所有图片的下面 */
+            height: 400px;
+        }
+        .container>.items>.item{            
+            width:232px;
+            position: absolute;
+            box-shadow: 0 1px 3px rgba(0,0,0,.3);
+        }
+        .container>.items>.item>img{
+            width:100%;
+            display: block;
+        }
+        .container>.items>.item>p{
+            padding:10px;
+            background:#fff;
+        }
+        .container>.btn{
+            width: 280px;
+            height: 40px;
+            line-height: 40px;
+            margin:30px auto;
+            background:#ccc;
+            border-radius: 5px;
+            text-align: center;
+            font-size:15px;
+            font-weight: 900;
+            cursor: pointer;
+        }
+    </style>
+    <script src="./js/jquery-1.12.4.js"></script>
+    <script src="./js/template-web.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="items">
+            
+        </div>
+        <div class="btn">
+            点击加载更多
+        </div>
+    </div>
+    <script type="text/template" id="waterfall">
+        {{each json}}
+        <div class="item">
+        <img src="{{$value.path}}" alt="" style="height:{{$value.height}}px">
+            <p>{{$value.text}}</p>
+        </div>
+        {{/each}}
+    </script>
+    <script>
+        /*
+        需求分析:
+            1 通过ajax请求接口获得页面要显示图片和文字的数据
+                ==>json可以直接请求,不用做成接口
+                ==>$.get('./js/data.json',callback,'json')
+            2 把文字和数据填充到.items这个div里面
+                ==>var html = template('waterfall',{'json':data})
+            3 把items里面的item变成瀑布流布局
+                ==>总宽度是:1200
+                ==>每一列宽度是:232
+                ==>列数:5,索引index从0开始
+                ==>计算得到间隙 = (1200 - 232*列数)/(列数-1)
+                ==>如果知道列数的索引,就可以计算left = index*(232+间隙)
+        */
+
+        //1 通过ajax请求接口获得页面要显示图片和文字的数据
+        $.get('./js/data.json',function(data){
+            /*
+                2 把文字和数据填充到.items这个div里面
+                    ==>写一个瀑布流里面内容的模板,模板的type=text/template,id='waterfall'
+                    ==>统一使用标准语法
+                    ==>把模板要使用的数据传递进去:{"json":data},这是"json"就是模板里面的变量名称,data就是变量的初始值
+            */
+            var html = template('waterfall',{"json":data});
+            $('.items').append(html);
+            waterfall($('.container'));
+        },'json')
+
+
+        /*
+            3 写一个函数,可以把某个元素内部的内容变成瀑布流布局
+            参数:就是瀑布流容器的jquery元素节点,此处是.container这个div
+        */
+        function waterfall(element){
+            var $container = element;//最外层的.container容器
+            var $items = $container.children().eq(0);//这个包裹图片文字的总容器
+            var $btn = $container.children().eq(1);//点击加载更多按钮
+            var $itemArr = $items.children();//所有.item的集合
+            var totalWidth = $container.width() ;//总宽度是:1200
+            var width = $itemArr.width();//每个item的宽度232
+            var column = 5;//列数:5,索引index从0开始
+            var space = (totalWidth - width*column)/(column-1);//间隙
+            //需要准备一个数组,记录5列的每一列的总高度
+            var heightArr = [];            
+            //给每个item进行top和left的定位
+            $itemArr.each(function(index,item){
+                //item是dom元素,包装成jquery元素
+                if(index<column){
+                    //只有第一个行,就是索引是0-4的元素,top = 0
+                    $(item).css({
+                        top:0,
+                        left:index*(width+space)
+                    })
+                    //第一行,每一个元素的增加都要更新高度数组的数据
+                    heightArr.push($(item).height());
+                    console.log(heightArr)
+                }else{
+                    //需要一个变量记录最短的那一列
+                    var minIndex = 0;
+                    var minHeight = heightArr[minIndex];
+                    //从第5个索引元素开始,都要排在最短的哪一列
+                    //先要计算出最短的那一列的索引minIndex和那一列的高度minHeight                 
+                    $.each(heightArr,function(i,value){
+                        if(value<=minHeight){
+                            minIndex = i;
+                            minHeight = heightArr[minIndex];
+                        }
+                    })
+                    //就可以把元素放到最短的那一列了
+                    $(item).css({
+                        top:minHeight+15,//15是垂直间隙
+                        left:(width+space)*minIndex
+                    })
+                    // 更新当前列的告诉
+                    heightArr[minIndex] = heightArr[minIndex] +15+$(item).height();
+                }
+                
+            })
+            //所有元素排布完成,要设置.items的高度
+           
+            var maxHeight = Math.max(...heightArr);
+            $items.height(maxHeight)
+        }
+    </script>
+</body>
+</html>

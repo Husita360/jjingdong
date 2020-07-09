@@ -1,4 +1,4 @@
-$width:1120px;
+$width:1200px;
 $margin:0 auto;
 .top-wrap{
     background: #e3e4e5;
@@ -186,6 +186,8 @@ $margin:0 auto;
     height: 110px;
     overflow: hidden;
     position: relative;
+    background: url(../images/regist_wrap.jpg) center center;
+    cursor: pointer;
 }
 .crumb-wrap{
     background-color: #f2f2f2;
@@ -193,8 +195,7 @@ $margin:0 auto;
         width: $width;
         margin: $margin;
         height: 40px;
-        line-height: 40px;
-        
+        line-height: 40px;      
     }
 }
 .w{
@@ -212,7 +213,6 @@ $margin:0 auto;
         width: 352px;
         float: left;
         padding-bottom: 15px;
-        background-color: yellow;
         .preview{
             
             .preview-img{
@@ -282,7 +282,6 @@ $margin:0 auto;
         width: 590px;
         float: left;
         margin-left: 30px;
-        background-color: yellowgreen;
         .sku-name{
             margin-bottom: 5px;
             font: 700 16px Arial,"microsoft yahei";
@@ -391,12 +390,7 @@ $margin:0 auto;
 
 
                
-                .font-style{
-                    float: left;
-                    padding-left: 10px;
-                    font-family: simsun;
-                    color: #999;
-                }
+               
 
             }
             .distribution{
@@ -431,18 +425,186 @@ $margin:0 auto;
                         float: left;
                         font-size: 12px;
                     }
-                    .w{
-                        overflow: hidden;
-                        b{
-                            color: red;
-
-                            height: 20px;
-                        }
-                    }
+                   
                     
                 
                 }
-            
-            }
+                .kind{
+                    overflow: hidden;
+                    margin-top: 20px;
+                    dl{
+                        overflow: hidden;
+                    >dt{
+                        float: left;
+                        padding-left: 10px;
+                        font-family: simsun;
+                        color: #999;
 
+                    }
+                    >dd{
+                        float: left;
+                        >.active{
+                            float: left;
+                            margin: 0 5px 0;
+                            font-size: 12px;
+                            color: #666;
+                            border: 1px solid gray;
+                            div>img{
+                                display: block;float: left;
+                                border-right: none ;
+                            }
+                            div>span{
+                                display:block;
+                                float: left;
+                                line-height:40px ;
+                                height: 40px;
+                                background-color:rgb(204, 204, 204);
+                                border-left: none;
+                                
+                            }
+                            :hover{
+                                border: 1px solid red;
+                            }
+                        }
+                    }
+                }
+                   
+                }
+                .pay{
+                    color: #666;
+                    overflow: hidden;
+                    margin-top: 20px;
+                    span{
+                        float: left;
+                    }
+                    >div span{
+                        color: #444;
+                        display: block;
+                        border: 1px solid gray;
+                        padding:  0 13px 0;
+                        margin: 0 10px 0;
+                        cursor: pointer;
+                        :hover{
+                            border: 1px solid red;
+                        }
+                    }
+                }
+                .addShopCart{
+                    position: relative;
+                    top: 50px;
+                    left: 300px;
+                    .count-wrap{
+                        width: 58px;
+                        height: 44px;
+                        overflow: hidden;
+                        border: 1px solid #ccc;
+                        position: relative;
+                        margin-right: 10px;
+                        float: left;
+                        left: -70px;
+                        .count{
+                            display: block;
+                            width: 43px;
+                            height: 42px;
+                            line-height: 42px;
+                            position: absolute;
+                            border: 1px solid #777;
+                            text-align: center;
+
+                        }
+                        .countUp{
+                            display: block;
+                            width: 15px;
+                            text-align: center;
+                            height: 22px;
+                            line-height: 22px;
+                            overflow: hidden;
+                            background: #f1f1f1;
+                            color: #666;
+                            position: absolute;
+                            right: -1px;
+                            border: 1px solid #ccc;
+                        }
+                        .countDown{
+                            display: block;
+                            width: 15px;
+                            text-align: center;
+                            height: 22px;
+                            line-height: 22px;
+                            overflow: hidden;
+                            background: #f1f1f1;
+                            color: #666;
+                            position: absolute;
+                            right: -1px;
+                            bottom: -1px;
+                            border: 1px solid #ccc;
+                        }
+                    }
+                   
+                    .add_btn{
+                        display: block;
+                        background-color: red;
+                        width: 90px;
+                        height: 46px;
+                        line-height: 46px;
+                        padding: 0 26px;
+                        font-size: 18px;
+                        font-family: "microsoft yahei";
+                        color: white;
+                        font-weight: bold;
+                        text-indent: -45px;
+
+                    }
+                }
+               
+            }
+           
+           
+            .font-style{
+                float: left;
+                padding-left: 10px;
+                font-family: simsun;
+                color: #999;
+            }
+    .info_right{
+        width: 210px;
+        height: 60px;
+        float: right;
+
+        .title{
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+        }
+        .show_pit{
+            dl{
+                margin-left: 30px;
+
+                margin-top: 20px;
+                dd{
+                    span{
+                        
+                      
+                    text-overflow: -o-ellipsis-lastline;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 1; 
+                    -webkit-box-orient: vertical;
+                    :hover{
+
+                        color: red;
+                    }
+                    }
+                    p{
+                        text-align: center;
+                        color: red;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+        
+    }
+    
 }

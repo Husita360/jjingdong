@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title></title>
+        <script src="./js/jquery-1.12.4.js"></script>
+        <script src="./js/template-web.js"></script>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .container{
+                width:1200px;
+                margin:0 auto;
+            }
+            .container>.items{
+                padding-top:40px;
+                /* items为什么需要定位 */
+                position: relative;
+                /* 问什么要设置这个height,是为了按钮能在所有图片的下面 */
+                height: 400px;
+            }
+            .container>.items>.item{            
+                width:232px;
+                position: absolute;
+                box-shadow: 0 1px 3px rgba(0,0,0,.3);
+            }
+            .container>.items>.item>img{
+                width:100%;
+                display: block;
+            }
+            .container>.items>.item>p{
+                padding:10px;
+                background:#fff;
+            }
+            .container>.btn{
+                width: 280px;
+                height: 40px;
+                line-height: 40px;
+                margin:30px auto;
+                background:#ccc;
+                border-radius: 5px;
+                text-align: center;
+                font-size:15px;
+                font-weight: 900;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="items">
+                
+            </div>
+            <div class="btn">
+                点击加载更多
+            </div>
+         </div>
+        <script type="text/template" id="water"></script>
+        <script>
+            $.get('./js/data.json',function(data){
+                   var html = template('waterfall',{"json":data});
+            $('.items').append(html);
+            waterfall($('.container'));
+            },'json')
+        </script>
+    </body>
+<html>

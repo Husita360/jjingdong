@@ -136,7 +136,6 @@ body{
         }
     }
     .cart-main{
-            background-color: greenyellow;
             .cart-thead{
                 display: inline-block;
                 display: block;
@@ -175,26 +174,31 @@ body{
             border-width: 2px 1px 1px;
             _border-width: 1px;
             border-color: #aaa #f1f1f1 #f1f1f1;
-            background: pink;
            
             .list1{
                 position: relative;
-                margin-bottom: 10px;
+                padding-bottom: 10px;
+                border:  1px solid black;
                 .checkbox{
                     position: absolute;
+                }
+                .discounts{
+                    height: 30px;
+                    line-height: 30px;
+                    text-indent: 50px;
                 }
             .cell-info{
                 padding-top: 15px;
                 margin-left: 40px;
                 border-top: 1px solid gray;
                 position: relative;
+                   
                 .cell-img{
                    position: relative;
                     a{
                         display: block;
                         width: 80px;
                         height: 80px;
-                        background-color: blue;
                         overflow: hidden;
                         
                     }
@@ -226,17 +230,17 @@ body{
                 }
                 .info-details{
                     position: absolute;
-                    top: 30px;
+                    top: 50px;
                     left: 350px;
                 }
                 .cell-price{
                     position: absolute;
-                    top: 35px;
+                    top: 55px;
                     right: 350px;
                 }
                 .cell-count{
                     position: absolute;
-                    top: 30px;
+                    top: 55px;
                     right: 200px;
                     #numCount{
                         width: 42px;
@@ -278,13 +282,13 @@ body{
                 }
                 .cell-sum{
                     position: absolute;
-                    top: 35px;
+                    top: 55px;
                     right: 120px;
     
                 }
                 .cell-del{
                     position: absolute;
-                    top: 35px;
+                    top: 55px;
                     right: 20px;
                 }
                
@@ -295,7 +299,6 @@ body{
                 bottom: 0px;
                 line-height: 50px;
                 border: 1px solid gray;
-                background-color: salmon;
                 .operate{
                     float: left;
                     padding-left: 60px;
@@ -326,6 +329,7 @@ body{
                         right:0;
                         overflow: hidden;
                         background: url(../images/cart-submit-btn-2019.png) 0 0 no-repeat;
+                       cursor: pointer;
                     }
                 }
             }

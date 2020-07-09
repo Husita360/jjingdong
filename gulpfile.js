@@ -92,13 +92,9 @@ const webserverHandler = ()=>{
         livereload:true,
         proxies:[
             {
-                source: '/abc', //表示请求的地址
-                target: 'http://127.0.0.1/json.php'//你要代理的地址
-            },
-            {
-                source: '/eee', //表示请求的地址
-                target: 'http://127.0.0.1/json.php'//你要代理的地址
-            } 
+                source: '/q_code', 
+                target: 'https://qr.m.jd.com/show'
+            }
         ]
     }))
 }
