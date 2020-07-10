@@ -1,6 +1,7 @@
 
+// 轮播图1
 
-console.log(1);
+
 
 // cate-menu 显示栏
 $('.cate-menu').children().mouseenter(function(){
@@ -17,11 +18,22 @@ $('.cate-menu').mouseleave(function(){
 })
 $(".cate-menu li a").addClass('cate-menu-lk');
 
-// 小选项卡
+// 搜索框
+$('.search-txt').on('input',function(){
+  var text = $(this).val();
+    $.ajax({
+      url:"https://suggest.taobao.com/sug?code=utf-8&q=ad&extras=1&area=c2c&bucketid=atb_search&pid=mm_130402922_1111150093_109790500145&unid=&clk1=&_=1594348221884",
+      success:function(data){
+        $('.search_ul').empty();
+        $.each(data.result,function(index,value){
+          $('.search_ul').append('<a href="#">'+'<li>'+value[0]+'</li>'+'</a>')
+        })
 
-$('.li2_wrap ol a').on('mouseenter',function(){
-  //被点击的li的类名变成active,其他的都没有类名
-  $(this).addClass('active').siblings().removeClass('active')
-  .parent().next().children().eq($(this).index()).addClass('active').siblings().removeClass('active');
-  //链式编程
+
+      },
+      dataType:"jsonp"
+    })
+})
+$(".search-txt").focusout(function(){
+  $('.search_ul').empty();
 })

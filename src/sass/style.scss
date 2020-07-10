@@ -31,7 +31,6 @@ body {
 }
 
 
-
 .header{
     width: 1190px;
     display: block;
@@ -41,6 +40,8 @@ body {
     position: relative;
     margin-bottom: 10px;
     background-color: white;
+   
+    
 }
 .logo{
     width:190px;
@@ -108,6 +109,19 @@ body {
                 color: red;
             }
         }
+     }
+     .search_ul{
+         width: 430px;
+         position: absolute;
+         border: 1px solid gray;
+         background-color: white;
+         z-index: 100;
+         top: 35px;
+         li{
+             height: 30px;
+             padding-left: 20px;
+             line-height: 30px;
+         }
      }
 
 }
@@ -335,7 +349,7 @@ body {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: url(..//user.png);
+    background: url(../images/user.png);
     background-size: 100%;
     float: left;
     color: #666;
@@ -451,11 +465,51 @@ body {
     z-index: 3;
     bottom: 0;
 }
+// 楼层跳跃
+.asider_list{
+    position: absolute;
+   top: 720px;
+  left:50%;
+  margin-left:610px;
+  ul{
+      li{
+          width: 58px;
+          height:58px;
+          a{
+            position: relative;
+            display: block;
+            width: 38px;
+            height: 38px;
+            line-height: 19px;
+            font-size: 14px;
+            color: #333;
+            padding: 10px;
+            text-align: center;
+            -webkit-transition: color .2s ease;
+            transition: color .2s ease;
+            background: #fff;
+            z-index: 1;
+            &:hover{
+                color:white;
+                background-color: red;
+            }
+          }
+      }
+      .last_li{
+          display: none;
+      }
+      .current{
+          display: block;
+      }
+  }
 
+}
 .seckill{
     height: 260px;
     margin-top: 30px;
     background-color: #fff;
+    position: relative;
+   
 }
 
 .seckill aside{
@@ -610,6 +664,7 @@ body {
             
         }
     }
+   
 }
 
 .seckill section{
@@ -1205,7 +1260,6 @@ body {
 /* 响应式 */
 @media screen and (max-width: 1300px) {
     body {
-        background-color:red !important;
     }
     .content, .header, .top,.copyright,.footer .mod_service,.footer .fl{
         width: 990px !important;
@@ -1255,7 +1309,56 @@ body {
     .right_top1 dd{
         width: 70px;
     }
+    .discover .lunbo .banner5 .lunbo_top{
+        margin: 35px 5px 0;
+        img{
+            width: 140px;
+            height: 140px;
+        }
+    }
+    .box-list .box-li3{
+        .li3_wrap{
+            a{
+                width: 90px;
+                .item_title{
+                   width: 90px;
+                }
+                .item-tag{
+                    em{
+                        display: none;
+                    }
+                }
+                .social{
+                    font-size: 12px;
+                }
+                
+            }
+        }
+    }
+    .box-list .box-li4{
+        .li4_wrap{
+            dl{
+                dt{
+                    display: none;
+                    img{
 
+                    }
+                }
+                dd{
+
+                }
+            }
+        }
+    }
+    .asider_list{
+     left: 42%;
+    
+    }
+   .cate-part{
+       width: 600px;
+       left:200px ;
+
+   }
 }
 
 
@@ -1331,7 +1434,9 @@ body {
         }
     }
 }
- 
+ a{
+
+ }
 
 .footer .fl 
 // .fl>dl,a{

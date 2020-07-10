@@ -28,7 +28,7 @@
         </div>
         <!-- 头部logo与搜索栏 -->
         <div style="background-color: white;   border: 1px solid #dddddd;">
-            <div class="header">
+            <div class="header" id="header">
                 <div class="logo"><a href="https://hellojoy.jd.com/?babelChannel=1518455&activityId=8061&source=01"></a></div>
                 <div class="search">
                     <div class="form">
@@ -40,11 +40,12 @@
                             <button class="btn">
                                 <span class="iconfont icon-search"></span>
                             </button>
+                            <ul class="search_ul"></ul>
                     </div>
                     <!-- 购物车 -->
                     <div class="shopCart">
                         <span class="iconfont icon-gouwuche"></span>
-                        <a href="#">我的购物车</a>
+                        <a href="./shopCart.html" target="_blank">我的购物车</a>
                         <em class="shopCount">0</em>
                     </div>
                     <div class="QR-code"><img src="http://img12.360buyimg.com/img/jfs/t1/67481/15/565/28110/5cec9234E71c47244/dc4cf353fd96922e.png.webp" alt=""></div>
@@ -71,12 +72,18 @@
  
                     </ul>   
                 </div>
-               
+                
             </div>
            
         </div>
+
+       
+
+        </div>
+
+      
         <div class="content">
-           
+            
          
             <div class="clearfloat cate">
                    <!-- 左边菜单显示栏 -->
@@ -153,7 +160,7 @@
                             <div class="swiper-slide"><img src="../images/banner5.jpg" alt=""></div>
                             <div class="swiper-slide"><img src="../images/banner6.jpg" alt=""></div>
                             <div class="swiper-slide"><img src="../images/banner7.jpg" alt=""></div>
-                            <div class="swiper-slide"><img src="../images/banner8.jpg" alt=""></div>
+                            <div class="swiper-slide"><img src="//img30.360buyimg.com/pop/s590x470_jfs/t1/136627/25/3572/83151/5eff1013E8c1b6dcb/1c8dee9974880e75.jpg.webp" alt=""></div>
                         </div>
                         <!-- 如果需要分页器 -->
                         <div class="swiper-pagination page1"></div>
@@ -200,8 +207,9 @@
                         <dd>
                             <a href="">Hi~欢迎逛京东！</a>
                             <p>
-                                <a href="./login.html">登录</a><span>|</span>
-                                <a href="">注册</a>
+                                <a href="./login.html" target="_blank">登录</a><span>|</span>
+                                <a href="./regist.html
+                                " target="_blank">注册</a>
                             </p>
                         </dd>
                        
@@ -241,9 +249,22 @@
                     </div>
                 </div>
             </div>
-           
+
+            
+            <div class="asider_list">
+            <ul>
+                <li><a href="#seckill">京东秒杀</a> </li>
+                <li><a href="#special">每日特价</a> </li>
+                <li><a href="discover">发现好货</a> </li>
+                <li><a href="#new_product">新品首发</a> </li>
+                <li><a href="https://jdcs.jd.com/chat/index.action?venderId=1&entry=jd_web_jimi_jdhome" target="_black">客服</a> </li>
+                <li><a href="https://surveys.jd.com/index.php?r=survey/index/sid/889711/newtest/Y/lang/zh-Hans" target="_blank">反馈</a> </li>
+                <li class="last_li"><a href="">回到顶部</a> </li>
+            </ul>
+        </div>
             <!-- 京东秒杀 -->
-            <div class="seckill">
+            <div class="seckill" id="seckill">
+                
                 <aside>
                     <h2>京东秒杀</h2>
                      <div class="desc">10:00点场倒计时</div>
@@ -261,7 +282,7 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <div class="slider">
-                                    <a href="#">
+                                    <a href="./detail.html">
                                         <div class="wrap">
                                         <img src="//img20.360buyimg.com/seckillcms/s140x140_jfs/t1/112301/37/11788/201900/5f02c058E2b1d309f/d564e60606b5128d.jpg.webp" alt="">
                                         </div>
@@ -500,8 +521,10 @@
                     </div>
 
                 </section>
+               
+              
             </div> 
-            <div class="special clearfloat">
+            <div class="special clearfloat" id="special">
                 <div class="special_price">
                     <div class="price-title">
                         <h3>每日特价</h3>
@@ -949,7 +972,7 @@
                 </div>
             </div>
             <!-- 新品首发 -->
-            <ul class="box-list">
+            <ul class="box-list" id="new_product">
                 <li class="box-li1">
                     <div class="li1_title">
                         新品首发
@@ -1415,8 +1438,51 @@
         $price_item.on('mouseenter',function(){
             $price_main.eq($(this).index()).addClass('active').siblings().removeClass('active');
 })
-               
+// 浮动列表
+
+    var $menu_list = $('.asider_list ul>li');
+    var $length = $menu_list.length-1;
+        $menu_list[0].click(function(){
+            
+
+            $(window).animate({ scrollTop:$('#seckill').offset().top }, 10000);
+        })
+        $menu_list[1].click(function(){
+            
+          $('html,body').animate({scrollTop:$('#seckill').offset().top},500);
+
+        })
+    
+        $(window).scroll(function(){
+            if($(window).scrollTop() >= 400){
+            $('.last_li').css({
+                "display":"block"
+            })
+            $('.asider_list').css({
+                position:"fixed",
+            }).stop().animate({
+                top:200
+            },"slow")        
+        }
+        if($(window).scrollTop()< 400){
+          
+            $('.asider_list').css({
+                position:"absolute",
+            }).stop().animate({
+                top:700
+            },"slow")    
+            $('.last_li').css({
+                "display":"none"
+            }) 
+        }
+    })
+        console.log($('#special').offset().top);
+          
+       
+
+                //$('body,html').animate({scrollTop:0},1000);
             </script>   
              <script src="../js/index.js"></script>
+             
     </body>
 <html>
